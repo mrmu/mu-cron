@@ -22,22 +22,22 @@
     ```
 2. JS - 複製 js 的語法，注意要對應 HTML DOM，還有將 mu_cron_admin.ajax_url 換成正確的參數：
     ```
-(function( $ ) {
-	'use strict';
+    (function( $ ) {
+    	'use strict';
+    
+    	var _mu_cron_loading = false;
 
-	var _mu_cron_loading = false;
-
-	// 排程作業進度更新
-	function mu_cron_progress_load() {
-		console.log('mu_cron_progress_load');
-		_mu_cron_loading = true;
-		$.ajax({
-			async: true,
-			type: 'POST',
-			url: mu_cron_admin.ajax_url,
-			data: {
-				action: 'mu_cron_progress_load'
-			},
+    	// 排程作業進度更新
+    	function mu_cron_progress_load() {
+    		console.log('mu_cron_progress_load');
+    		_mu_cron_loading = true;
+    		$.ajax({
+    			async: true,
+    			type: 'POST',
+    			url: mu_cron_admin.ajax_url,
+    			data: {
+    				action: 'mu_cron_progress_load'
+    			},
 			dataType: 'json',
 			success: function(res) {
 				if (res.status != 0) {
@@ -98,7 +98,7 @@
 
 	});
 
-})( jQuery );
+    })( jQuery );
 
     ```
 3. Admin Hooks:
@@ -138,4 +138,4 @@
 ### Todo
 
 * 同時間只能允許一個排程
-* 如何讓外部使用 (丟callback 進去)
+* 如何讓外部使用 (丟callback 進去)    
