@@ -114,7 +114,10 @@
 6. 按下執行 Cron 的按鈕後，應該會正確執行排程工作。
 7. 改寫排程工作的邏輯，請改寫 callback_do_action 和 callback_rest_need_do 
 
-### Post Meta
+### 注意事項
+
+* 排程執行的函式，本身不帶登入狀態，即使在 wp-admin 頁面，也會是「訪客」身份，如果使用到 wp-admin 底下的函式也要另外 import 才能使用。
+* 排程執行都會重建物件，所以要從外部傳遞設定值或參數，最好透過 db 存取，如 set_data, get_data。
 
 ### Hooks
 
